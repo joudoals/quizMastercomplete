@@ -11,7 +11,11 @@ const authRoutes = require('./api/auth');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://blue-meadow-0e61aaf1e.6.azurestaticapps.net',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // Validate environment variables
