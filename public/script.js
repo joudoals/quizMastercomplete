@@ -48,7 +48,7 @@ function showFeedback(elementId, message, type) {
     }
   
     try {
-      const response = await fetch('/api/quizzes', {
+      const response = await fetch('https://quizmaster-backend-joudoals.azurewebsites.net/api/quizzes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('token')}` },
         body: JSON.stringify({ title: quizTitle, questions })
@@ -112,7 +112,7 @@ function showFeedback(elementId, message, type) {
       try {
         const token = localStorage.getItem('token');
         if (!token) throw new Error('Please log in to view quizzes');
-        const response = await fetch('/api/quizzes', {
+        const response = await fetch('https://quizmaster-backend-joudoals.azurewebsites.net/api/quizzes', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!response.ok) {
@@ -139,7 +139,7 @@ function showFeedback(elementId, message, type) {
     try {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('Please log in to take a quiz');
-      const response = await fetch('/api/quizzes', {
+      const response = await fetch('https://quizmaster-backend-joudoals.azurewebsites.net/api/quizzes', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Failed to fetch quizzes');
@@ -212,7 +212,7 @@ function showFeedback(elementId, message, type) {
     }
   
     try {
-      const response = await fetch('/api/submissions', {
+      const response = await fetch('https://quizmaster-backend-joudoals.azurewebsites.net/api/submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('token')}` },
         body: JSON.stringify({ userId, quizId, answers })
@@ -245,7 +245,7 @@ function showFeedback(elementId, message, type) {
       }
   
       try {
-        const response = await fetch('/api/results', {
+        const response = await fetch('https://quizmaster-backend-joudoals.azurewebsites.net/api/results', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('token')}` },
           body: JSON.stringify({ userId, quizId })
@@ -280,7 +280,7 @@ function showFeedback(elementId, message, type) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('https://quizmaster-backend-joudoals.azurewebsites.net/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -304,7 +304,7 @@ function showFeedback(elementId, message, type) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch('https://quizmaster-backend-joudoals.azurewebsites.net/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
